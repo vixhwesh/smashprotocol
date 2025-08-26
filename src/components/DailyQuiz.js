@@ -134,7 +134,7 @@ const DailyQuiz = ({ onQuizComplete, onClose }) => {
     }, 2000);
   };
 
-  const handleNextQuestion = () => {
+  const handleNextQuestion = useCallback(() => {
     if (currentQuestionIndex < quizQuestions.length - 1) {
       setCurrentQuestionIndex(prev => prev + 1);
       setSelectedAnswer(null);
@@ -142,7 +142,7 @@ const DailyQuiz = ({ onQuizComplete, onClose }) => {
     } else {
       completeQuiz();
     }
-  };
+  }, [currentQuestionIndex, quizQuestions.length]);
 
   const completeQuiz = () => {
     setQuizState('completed');
